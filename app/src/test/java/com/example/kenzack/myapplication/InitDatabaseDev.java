@@ -1,5 +1,8 @@
 package com.example.kenzack.myapplication;
 
+import com.example.kenzack.myapplication.model.Droit;
+import com.example.kenzack.myapplication.model.Image;
+import com.example.kenzack.myapplication.model.Utilisateur;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
@@ -9,9 +12,6 @@ import com.j256.ormlite.table.TableUtils;
 import org.junit.Test;
 
 import java.sql.SQLException;
-
-import com.example.kenzack.myapplication.model.Droit;
-import com.example.kenzack.myapplication.model.Image;
 
 /**
  * Created by aziouiz on 09/05/16.
@@ -30,7 +30,7 @@ public class InitDatabaseDev {
         utilisateurDao.executeRaw("drop database if exists "+DB_NAME+";");
         utilisateurDao.executeRaw("create database if not exists "+DB_NAME+";");
         utilisateurDao.executeRaw("use "+DB_NAME+";");
-        TableUtils.createTable(connectionSource, Image.Utilisateur.class);
+        TableUtils.createTable(connectionSource, Utilisateur.class);
         TableUtils.createTable(connectionSource, Image.class);
         TableUtils.createTable(connectionSource, Droit.class);
         connectionSource.close();
