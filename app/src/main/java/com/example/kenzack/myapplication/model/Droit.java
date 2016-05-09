@@ -1,4 +1,4 @@
-package com.example.kenzack.myapplication;
+package com.example.kenzack.myapplication.model;
 
 
 import com.j256.ormlite.field.DatabaseField;
@@ -7,10 +7,13 @@ import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable
 public class Droit {
+    @DatabaseField(generatedId = true)
+    private int id;
     @DatabaseField(foreign = true, foreignAutoRefresh = true)
     private Image image;
     @DatabaseField(foreign = true, foreignAutoRefresh = true)
-    private Utilisateur utilisateur;
+    private Image.Utilisateur utilisateur;
+    @DatabaseField
     private Autorisation autorisation;
 
     public Image getImage() {
@@ -21,11 +24,11 @@ public class Droit {
         this.image = image;
     }
 
-    public Utilisateur getUtilisateur() {
+    public Image.Utilisateur getUtilisateur() {
         return utilisateur;
     }
 
-    public void setUtilisateur(Utilisateur utilisateur) {
+    public void setUtilisateur(Image.Utilisateur utilisateur) {
         this.utilisateur = utilisateur;
     }
 

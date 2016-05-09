@@ -1,14 +1,9 @@
-package com.example.kenzack.myapplication;
+package com.example.kenzack.myapplication.model;
 
-/**
- * Created by KenZack on 09/05/2016.
- */
 import com.j256.ormlite.dao.ForeignCollection;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
-
-import java.util.Collection;
 
 /**
  * Created by zaziouiz on 07/05/2016.

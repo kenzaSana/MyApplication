@@ -1,4 +1,4 @@
-package com.example.kenzack.myapplication;
+package com.example.kenzack.myapplication.view;
 
 /**
  * Created by KenZack on 06/05/2016.

@@ -3,6 +3,7 @@ package com.example.kenzack.myapplication;
 /**
  * Created by KenZack on 09/05/2016.
  */
+import com.example.kenzack.myapplication.Utils.ImageUtils;
 import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
@@ -17,6 +18,9 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.Properties;
 
+import com.example.kenzack.myapplication.model.Droit;
+import com.example.kenzack.myapplication.model.Image;
+
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -24,7 +28,7 @@ import static org.junit.Assert.assertEquals;
  */
 public class TestUtilisateurImage {
     private ConnectionSource connectionSource;
-    private Dao<Utilisateur, Integer> utilisateurDao;
+    private Dao<Image.Utilisateur, Integer> utilisateurDao;
     private Dao<Image, Integer> imageDao;
     private Dao<Droit, Integer> droitDao;
     private String IMAGE_TEST_PATH;
@@ -44,11 +48,11 @@ public class TestUtilisateurImage {
         String url = "jdbc:mysql://"+IP_MYSQL_TEST+":3306/"+DB_TEST;
         connectionSource = new JdbcConnectionSource(url,LOGIN_MYSQL_TEST,PASSWORD_MYSQL_TEST); //construire cnx
         imageDao = DaoManager.createDao(connectionSource, Image.class);
-        utilisateurDao = DaoManager.createDao(connectionSource, Utilisateur.class);
+        utilisateurDao = DaoManager.createDao(connectionSource, Image.Utilisateur.class);
         utilisateurDao.executeRaw("drop database if exists test ;");
         utilisateurDao.executeRaw("create database if not exists test;");
         utilisateurDao.executeRaw("use test;");
-        TableUtils.createTable(connectionSource,Utilisateur.class);
+        TableUtils.createTable(connectionSource, Image.Utilisateur.class);
         TableUtils.createTable(connectionSource,Image.class);
     }
     @After
@@ -58,7 +62,7 @@ public class TestUtilisateurImage {
 
     @Test
     public void testCreateUserWithTwoImages() throws Exception{
-        Utilisateur u1 = new Utilisateur();
+        Image.Utilisateur u1 = new Image.Utilisateur();
         u1.setLogin("u1");
         Image i1 = new Image();
         i1.setNom("i1");
@@ -72,7 +76,7 @@ public class TestUtilisateurImage {
         utilisateurDao.create(u1);
         imageDao.create(i1);
         imageDao.create(i2);
-        Utilisateur fromDb = utilisateurDao.queryForId(u1.getId());
+        Image.Utilisateur fromDb = utilisateurDao.queryForId(u1.getId());
         assertEquals(fromDb.getImagesCree().size(),2);
     }
 }

@@ -1,4 +1,4 @@
-package com.example.kenzack.myapplication;
+package com.example.kenzack.myapplication.Utils;
 
 /**
  * Created by KenZack on 09/05/2016.
